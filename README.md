@@ -4,7 +4,7 @@ The Sudoku puzzle can be viewed as a constraint satisfaction problem --  a mathe
 The puzzle board can be seen as 81 variables in total, i.e. the tiles to be filled with digits. Each variable is named by its row and its column, and must be assigned a value from 1 to 9, subject to the constraint 
 that no two cells in the same row, column, or box may contain the same value.
 
-This project aims is to build a Sudoku puzzle solver implementing the AC3 and Backtracking Search algorithms.
+This project's aim is to build a Sudoku puzzle solver implementing the AC3 and Backtracking Search algorithms.
 
 # **To Test**
 
