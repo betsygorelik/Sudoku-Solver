@@ -1,4 +1,5 @@
-#Representation of the Sudoku board, domain, and constraints
+from copy import copy
+# Representation of the Sudoku board, domain, and constraints
 class CSP:
     def __init__(self, initBoard):
         
