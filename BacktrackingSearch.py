@@ -47,20 +47,20 @@ class BacktrackingSearch:
     
     # main caller function that returns the assignment of the board
     def BTS(self, csp):
-        assignment = self.BackTrack({}, csp)
+        assignment = self.BackTrack(self, {}, csp)
         return self.board_to_string(assignment, csp)
 
     #  BackTrack is the recursive algorithm that returns whether an assignmemnt is complete and the assignment.
     def BackTrack(self, assignments, csp):
-        if self.CheckAssignment(assignments, csp):
+        if self.CheckAssignment(self, assignments, csp):
             return assignments
         
-        var = self.SelectUnassignVariable(assignments, csp)
+        var = self.SelectUnassignVariable(self, assignments, csp)
         for value in csp.domain[var]:
             new_assignment = assignments.copy()
             new_assignment[var] = value
-            if self.CheckConsistent(new_assignment, csp):
-                result = self.BackTrack(new_assignment, csp)
+            if self.CheckConsistent(self, new_assignment, csp):
+                result = self.BackTrack(self, new_assignment, csp)
                 if result != 'failure':
                     return result
             new_assignment.pop(var, None)

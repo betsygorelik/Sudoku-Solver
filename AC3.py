@@ -32,15 +32,15 @@ class AC3:
     
     # Returns true if arc consistent domains for each variable can be made
     def AC3(self, csp):
-        arcs_queue = self.CreateArcs(csp.constraints)
+        arcs_queue = self.CreateArcs(self, csp.constraints)
         
         while arcs_queue:
             Xi, Xj = arcs_queue.pop(0)  
-            if self.Revise(csp, Xi, Xj):
+            if self.Revise(self, csp, Xi, Xj):
                 if not csp.domain[Xi]:  
                     return False
         
-                csp.neighbors = self.find_neighbors(csp.neighbors, Xi, csp.constraints)
+                csp.neighbors = self.find_neighbors(self, csp.neighbors, Xi, csp.constraints)
                 for Xk in csp.neighbors[Xi]:
                     if Xk != Xj:
                         arcs_queue.append((Xk, Xi))
@@ -52,10 +52,10 @@ class AC3:
         #### Otherwise prints the AC3 domain.
         if max([len(val) for val in csp.domain.values()])==1:
             solution_string="".join([str(item) for sublist in list(csp.domain.values()) for item in sublist])
-            print("Sudoku is Solved")
-            print()
+            print("Sudoku is Solved After only AC3")
+            print(solution_string)
         else:
-            print("Sudoku is Not Solved")
+            print("Sudoku is Not Yet Solved After AC3")
             print()
             print("Domain: ")
             return csp.domain          
